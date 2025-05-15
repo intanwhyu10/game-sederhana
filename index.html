@@ -3,45 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Game Klik Angka</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
+  <title>Tebak Warna</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
 
-<header>
-  <h1>Klik Angka!</h1>
-  <p>Latih kecepatan refleksmu dengan klik angka yang muncul</p>
+<header class="text-center text-white py-4">
+  <h1>Tebak Warna!</h1>
+  <p>Fokus dan pilih warna teks yang tampil, bukan tulisannya!</p>
 </header>
 
-<section id="play">
-  <div class="container text-center">
-    <h2>Play</h2>
-    <button onclick="startGame()" class="btn btn-success mb-3">Mulai Permainan</button>
-    <div id="game-area">
-      <div id="number-box"></div>
-    </div>
-    <p id="score-text">Skor: 0</p>
-    <p id="timer">Waktu: 15 detik</p>
+<section class="container text-center py-4" id="play">
+  <h2>Play</h2>
+  <div id="game-box" class="my-3">
+    <p id="color-text">Tunggu...</p>
   </div>
+  <div id="button-container" class="mb-3"></div>
+  <p id="score">Skor: 0</p>
+  <p id="timer">Waktu: 30 detik</p>
+  <button onclick="startGame()" class="btn btn-success">Mulai Game</button>
 </section>
 
-<section id="how-to-play">
-  <div class="container">
-    <h2>How to Play</h2>
-    <p>Klik angka yang muncul di dalam kotak sebelum waktunya habis. Setiap klik yang benar akan menambah skor!</p>
-  </div>
+<section class="container py-4" id="how-to-play">
+  <h2>How to Play</h2>
+  <p>Nama warna akan muncul, tapi dengan warna teks berbeda. Klik warna dari TULISAN itu, bukan arti katanya!</p>
 </section>
 
-<section id="credit">
-  <div class="container">
-    <h2>Credit</h2>
-    <p>Dibuat oleh: Intan Wahyu Kesuma</p>
-  </div>
+<section class="container py-4" id="credit">
+  <h2>Credit</h2>
+  <p>Dibuat oleh: Intan Wahyu Kesuma</p>
 </section>
 
-<footer>
-  <p>&copy; 2025 Game Klik Angka. All rights reserved.</p>
+<footer class="text-center py-3">
+  <p>&copy; 2025 Tebak Warna. All rights reserved.</p>
 </footer>
 
 <script src="script.js"></script>
