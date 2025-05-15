@@ -1,38 +1,52 @@
+const colors = [
+  { name: "Merah", code: "red" },
+  { name: "Biru", code: "blue" },
+  { name: "Hijau", code: "green" },
+  { name: "Kuning", code: "yellow" },
+  { name: "Ungu", code: "purple" },
+  { name: "Hitam", code: "black" }
+];
+
 let score = 0;
-let timeLeft = 15;
+let timeLeft = 30;
 let gameInterval;
-let countdownInterval;
+let countdown;
 
 function startGame() {
   score = 0;
-  timeLeft = 15;
-  document.getElementById("score-text").textContent = "Skor: 0";
-  document.getElementById("timer").textContent = "Waktu: 15 detik";
+  timeLeft = 30;
+  document.getElementById("score").textContent = "Skor: 0";
+  document.getElementById("timer").textContent = "Waktu: 30 detik";
+  generateButtons();
+  nextQuestion();
 
-  showRandomNumber();
-
-  gameInterval = setInterval(showRandomNumber, 1000);
-
-  countdownInterval = setInterval(() => {
+  clearInterval(countdown);
+  countdown = setInterval(() => {
     timeLeft--;
     document.getElementById("timer").textContent = `Waktu: ${timeLeft} detik`;
-    if (timeLeft === 0) {
-      clearInterval(gameInterval);
-      clearInterval(countdownInterval);
-      document.getElementById("number-box").textContent = "Selesai!";
-      document.getElementById("game-area").style.backgroundColor = "#d63031";
+    if (timeLeft <= 0) {
+      clearInterval(countdown);
+      document.getElementById("color-text").textContent = "Selesai!";
     }
   }, 1000);
 }
 
-function showRandomNumber() {
-  const randomNum = Math.floor(Math.random() * 9) + 1;
-  const box = document.getElementById("number-box");
-  box.textContent = randomNum;
-
-  box.onclick = function () {
-    score++;
-    document.getElementById("score-text").textContent = `Skor: ${score}`;
-    showRandomNumber();
-  };
+function generateButtons() {
+  const container = document.getElementById("button-container");
+  container.innerHTML = "";
+  colors.forEach((color) => {
+    const btn = document.createElement("button");
+    btn.className = "btn btn-outline-dark";
+    btn.textContent = color.name;
+    btn.onclick = () => checkAnswer(color.code);
+    container.appendChild(btn);
+  });
 }
+
+let correctColor = "";
+
+function nextQuestion() {
+  const textColor = colors[Math.floor(Math.random() * colors.length)];
+  const textWord = colors[Math.floor(Math.random() * colors.length)];
+
+  const colorText = document.getElementById("color
