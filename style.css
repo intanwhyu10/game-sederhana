@@ -22,12 +22,21 @@ footer {
 }
 
 #game-area {
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   background-color: #82ccdd;
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
+  font-size: 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+#number-box {
+  color: white;
+  font-size: 48px;
 }
