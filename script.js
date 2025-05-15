@@ -9,14 +9,15 @@ const colors = [
 
 let score = 0;
 let timeLeft = 30;
-let gameInterval;
 let countdown;
+let correctColor = "";
 
 function startGame() {
   score = 0;
   timeLeft = 30;
   document.getElementById("score").textContent = "Skor: 0";
   document.getElementById("timer").textContent = "Waktu: 30 detik";
+  document.getElementById("color-text").textContent = "Tunggu...";
   generateButtons();
   nextQuestion();
 
@@ -43,10 +44,22 @@ function generateButtons() {
   });
 }
 
-let correctColor = "";
-
 function nextQuestion() {
   const textColor = colors[Math.floor(Math.random() * colors.length)];
   const textWord = colors[Math.floor(Math.random() * colors.length)];
 
-  const colorText = document.getElementById("color
+  const colorText = document.getElementById("color-text");
+  colorText.textContent = textWord.name;
+  colorText.style.color = textColor.code;
+  correctColor = textColor.code;
+}
+
+function checkAnswer(selectedColor) {
+  if (timeLeft <= 0) return;
+
+  if (selectedColor === correctColor) {
+    score++;
+    document.getElementById("score").textContent = `Skor: ${score}`;
+  }
+  nextQuestion();
+}
